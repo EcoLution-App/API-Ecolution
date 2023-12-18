@@ -2,8 +2,7 @@ import admin from "firebase-admin";
 
 admin.initializeApp({
   credential: admin.credential.cert("./firebase-keys.json"),
-  databaseURL:
-    "https://ultimate-gcs-firebase-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  databaseURL: "https://ecolution-6ae7f-default-rtdb.asia-southeast1.firebasedatabase.app/",
 });
 
 const db = admin.database();

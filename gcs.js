@@ -5,10 +5,10 @@ import path from "path";
 
 const storage = new Storage({
   keyFilename: "gcs-keys.json",
-  projectId: "iyain-407808",
+  projectId: "ecolution-408007",
 });
 
-const bucket = storage.bucket("apanama");
+const bucket = storage.bucket("ecolution");
 
 const uploadImage = (image) =>
   new Promise((resolve, reject) => {
@@ -22,9 +22,7 @@ const uploadImage = (image) =>
 
     blobStream
       .on("finish", async () => {
-        const publicUrl = util.format(
-          `https://storage.googleapis.com/${bucket.name}/${blob.name}`
-        );
+        const publicUrl = util.format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
         resolve(publicUrl);
       })
       .on("error", () => {
