@@ -2,10 +2,7 @@ import { dbRef } from "../firebase.js";
 
 export const getAllFavorites = async (req, res) => {
   try {
-    const favoriteSnapshot = await dbRef
-      .child("favorites")
-      .child(req.params.id)
-      .get();
+    const favoriteSnapshot = await dbRef.child("favorites").child(req.params.id).get();
     const favorites = favoriteSnapshot.val();
     if (!favorites) {
       res.status(404).json({});
@@ -31,6 +28,7 @@ export const getAllFavorites = async (req, res) => {
 export const addFavorite = async (req, res) => {
   try {
     const data = req.body;
+    console.log(data);
     const snapshot = await dbRef.child("favorites").child(data.userId).get();
     let favorites = snapshot.val();
 
@@ -80,4 +78,4 @@ export const deleteFavorite = async (req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
-}
+};

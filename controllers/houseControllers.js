@@ -5,7 +5,12 @@ import { dbRef } from "../firebase.js";
 export const getAllHouses = async (req, res) => {
   try {
     const snapshot = await dbRef.child("houses").get();
-    const houses = snapshot.val();
+    let houses = [];
+    snapshot.forEach((childSnapshot) => {
+      const house = childSnapshot.val();
+      houses.push(house);
+    });
+
     res.status(200).json(houses);
   } catch (error) {
     res.status(400).send(error.message);
@@ -18,11 +23,20 @@ export const addHouse = async (req, res) => {
     const imageUrl = await uploadImage(image);
 
     const data = req.body;
-    const house = new House(data.title, data.price, data.description, data.seller, data.email, data.address, data.subdistrict, imageUrl);
 
-    const newHouseRef = dbRef.child("houses").push();
-    newHouseRef.set(house);
-    house.id = newHouseRef.key;
+    const house = new House(data.title, data.price, data.description, data.seller, data.email, data.address, data.subdistrict, imageUrl);
+    console.log(house);
+
+    const houseRef = dbRef.child("houses");
+
+    const pushHouseRef = houseRef.push();
+    pushHouseRef.set(house);
+    house.id = pushHouseRef.key;
+
+    const newHouseRef = houseRef.child(house.id);
+    newHouseRef.update({
+      id: house.id,
+    });
 
     res.status(200).json({
       message: "House added successfully",
@@ -77,7 +91,7 @@ export const updateHouse = async (req, res) => {
 
     res.status(200).json({
       message: "House updated successfully",
-      house,
+      newHouse,
     });
   } catch (error) {
     res.status(400).send(error.message);
