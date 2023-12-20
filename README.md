@@ -1,7 +1,7 @@
 ﻿# API-Ecolution
-API untuk mendapatkan response GET dan POST untuk menangkap dan memberikan data ke database, Dan juga untuk menjadi jembatan untuk diintegrasikan kepada mobile development
+The API is designed to handle GET, PUT, and POST requests to capture and retrieve data from the database. Additionally, it serves as a bridge for seamless integration into mobile development.
 
-# Ecolution-CC RESTful API Documentation
+## Ecolution-CC RESTful API Documentation
 
 This documentation offers a comprehensive overview and step-by-step instructions for running a RESTful API developed with Node.js. The API can be effortlessly executed locally, interacting with data from a Firebase Realtime Database, or through a Docker container utilizing the specified Dockerfile.
 
