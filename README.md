@@ -53,7 +53,7 @@ The API should now be running on `http://localhost:3000`
 ### Get Houses by ID
 
 - **Route**: GET /api/v1/houses/:id
-- **Description**: Get houses by ID
+- **Description**: Get house by ID
 - **JSON Response**:
 
 ```json
@@ -115,7 +115,7 @@ The API should now be running on `http://localhost:3000`
 ### Delete Houses
 
 - **Route**: DELETE /api/v1/houses/:id
-- **Description**: Delete houses by ID
+- **Description**: Delete house by ID
 - **JSON Response**:
 
 ```json
